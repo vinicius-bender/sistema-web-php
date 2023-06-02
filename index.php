@@ -37,12 +37,12 @@
         <div class="info">
             <div class="cart">
                 <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
-                <p>Cart</p>
+                <p>Carrinho</p>
             </div>
 
             <div class="account">
                 <i class="fa-solid fa-user" style="color: #ffffff;"></i>
-                <p>Login</p>
+                <p>Entrar</p>
             </div>
         </div>
 
@@ -80,10 +80,98 @@
         </div>
     </div> -->
 
-    <section class="produtos">
+    <section>
+        <h1>Produtos</h1>
+        <div class="produtos">
+            <div class="produto" id="1">
+                <div class="bg-imagem"> 
+                    <img src="./assets/images/whey.png">
+                </div>
+                <div class="info-produto"> 
+                    <p>Whey</p>
+                    <p>R$200</p>
+                </div>
+                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
+            </div>
 
-    </section>
+            <!-- <div class="produto" id="1">
+                <div class="bg-imagem"> 
+                    <img src="./assets/images/whey.png">
+                </div>
+                <div class="info-produto"> 
+                    <p>Whey</p>
+                    <p>R$200</p>
+                </div>
+                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
+            </div>
 
+            <div class="produto" id="1">
+                <div class="bg-imagem"> 
+                    <img src="./assets/images/whey.png">
+                </div>
+                <div class="info-produto"> 
+                    <p>Whey</p>
+                    <p>R$200</p>
+                </div>
+                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
+            </div>
+
+            <div class="produto" id="1">
+                <div class="bg-imagem"> 
+                    <img src="./assets/images/whey.png">
+                </div>
+                <div class="info-produto"> 
+                    <p>Whey</p>
+                    <p>R$200</p>
+                </div>
+                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
+            </div>
+
+            <div class="produto" id="1">
+                <div class="bg-imagem"> 
+                    <img src="./assets/images/whey.png">
+                </div>
+                <div class="info-produto"> 
+                    <p>Whey</p>
+                    <p>R$200</p>
+                </div>
+                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
+            </div>
+
+            <div class="produto" id="1">
+                <div class="bg-imagem"> 
+                    <img src="./assets/images/whey.png">
+                </div>
+                <div class="info-produto"> 
+                    <p>Whey</p>
+                    <p>R$200</p>
+                </div>
+                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
+            </div>
+
+            <div class="produto" id="1">
+                <div class="bg-imagem"> 
+                    <img src="./assets/images/whey.png">
+                </div>
+                <div class="info-produto"> 
+                    <p>Whey</p>
+                    <p>R$200</p>
+                </div>
+                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
+            </div>
+
+            <div class="produto" id="1">
+                <div class="bg-imagem"> 
+                    <img src="./assets/images/whey.png">
+                </div>
+                <div class="info-produto"> 
+                    <p>Whey</p>
+                    <p>R$200</p>
+                </div>
+                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
+            </div> -->
+        </div>
+    <section>
 
 </body>
 
