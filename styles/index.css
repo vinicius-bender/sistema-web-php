@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
     color: #FFFFFF;
+    text-decoration: none;
 }
 
 header{
@@ -16,6 +17,7 @@ header{
     padding: 20px 40px 20px 40px;
     margin-bottom: 50px;
     font-size: 0.9rem;
+    text-decoration: none;
 }
 
 #phone{
@@ -85,10 +87,6 @@ select {
     font-size: 1.1rem;
 }
 
-a{
-    text-decoration: none;
-}
-
 .account{
     display: flex;
     flex-direction: row;
@@ -96,17 +94,15 @@ a{
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    text-decoration: none;
 }
 .account > a{
     color: #FFFFFF;
-    text-decoration: none;
 }
 
-/* .account:hover > a{
+.account:hover > a{
     text-decoration: none;
     color: orange;
-} */
+}
 
 
 .cart{
@@ -116,14 +112,15 @@ a{
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    color: #FFFFFF;
 }
 .cart > p{
     color: #FFFFFF;
 }
 
-/* .cart:hover > p{
+.cart:hover > p{
     color: orange;
-} */
+}
 
 #inverter{
     transform: scaleX(-1);
@@ -134,7 +131,9 @@ a{
     letter-spacing: -10px;
 }
 
+
 /*Produtos*/
+
 
 section  h1{
     font-size: 2em;

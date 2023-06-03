@@ -42,7 +42,7 @@
 
             <div class="account">
                 <i class="fa-solid fa-user" style="color: #ffffff;"></i>
-                <a href="./pages/login.php">Entrar</a>
+                <a href="login.php">Entrar</a>
             </div>
         </div>
     </header>

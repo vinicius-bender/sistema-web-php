@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
 }
 
 body{
@@ -30,7 +31,7 @@ input{
 
 #submit{
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 #submit:hover{
