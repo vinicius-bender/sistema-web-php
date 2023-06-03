@@ -4,3 +4,74 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+body{
+    background-color: #003D29;
+}
+
+form{
+    margin: 30px auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 350px;
+    gap: 16px;
+    padding: 25px;
+    background-color: rgb(121, 121, 121);
+    border: none;
+    border-radius: 20px;
+}
+
+input{
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
+
+#submit{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+#submit:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #003D29;
+}
+
+#login-existente{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#login-existente a,p{
+    color: white;
+}
+
+a{
+    font-size: 1.1rem;
+    font-weight: 500;
+    width: 100%;
+    text-decoration: none;
+}
+
+#entrar{
+    text-align: center;
+    width: 150px;
+    background-color: black;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+}
+
+#entrar:hover{
+    cursor: pointer;
+    background-color: white;
+}
+
+#entrar:hover > a{
+    color: black;
+}

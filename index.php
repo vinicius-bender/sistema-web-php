@@ -42,43 +42,10 @@
 
             <div class="account">
                 <i class="fa-solid fa-user" style="color: #ffffff;"></i>
-                <p>Entrar</p>
+                <p href="./pages/login.php">Entrar</p>
             </div>
         </div>
-
-        <!-- <div id="texto">
-            <p>Os melhores preços do mercado!  <strong>|</strong>  Compre agora!</p>
-        </div>         -->
-
-        <!-- <div class="custom-select">
-            <i class="fa-solid fa-language" style="color: #ffffff;"></i>
-            <select >
-                <option >Idioma</option>
-                <option>Português</option>
-                <option>Enligsh</option>
-                <option>Espanõl</option>
-            </select>
-        </div> -->
     </header>
-
-    <!-- <div class="menu">
-        <div class="logo">
-            <img src="./assets/images/mande_maromba-removebg-preview.png" width="60px">
-            <p>SuplementaFit</p>
-        </div>
-
-        <div class="info">
-            <div class="cart">
-                <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
-                <p>Cart</p>
-            </div>
-
-            <div class="account">
-                <i class="fa-solid fa-user" style="color: #000000;"></i>
-                <p>Login</p>
-            </div>
-        </div>
-    </div> -->
 
     <section>
         <h1>Produtos</h1>
@@ -88,88 +55,11 @@
                     <img src="./assets/images/whey.png">
                 </div>
                 <div class="info-produto"> 
-                    <p>Whey</p>
+                    <p>Whey Protein</p>
                     <p>R$200</p>
                 </div>
                 <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
             </div>
-
-            <!-- <div class="produto" id="1">
-                <div class="bg-imagem"> 
-                    <img src="./assets/images/whey.png">
-                </div>
-                <div class="info-produto"> 
-                    <p>Whey</p>
-                    <p>R$200</p>
-                </div>
-                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
-            </div>
-
-            <div class="produto" id="1">
-                <div class="bg-imagem"> 
-                    <img src="./assets/images/whey.png">
-                </div>
-                <div class="info-produto"> 
-                    <p>Whey</p>
-                    <p>R$200</p>
-                </div>
-                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
-            </div>
-
-            <div class="produto" id="1">
-                <div class="bg-imagem"> 
-                    <img src="./assets/images/whey.png">
-                </div>
-                <div class="info-produto"> 
-                    <p>Whey</p>
-                    <p>R$200</p>
-                </div>
-                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
-            </div>
-
-            <div class="produto" id="1">
-                <div class="bg-imagem"> 
-                    <img src="./assets/images/whey.png">
-                </div>
-                <div class="info-produto"> 
-                    <p>Whey</p>
-                    <p>R$200</p>
-                </div>
-                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
-            </div>
-
-            <div class="produto" id="1">
-                <div class="bg-imagem"> 
-                    <img src="./assets/images/whey.png">
-                </div>
-                <div class="info-produto"> 
-                    <p>Whey</p>
-                    <p>R$200</p>
-                </div>
-                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
-            </div>
-
-            <div class="produto" id="1">
-                <div class="bg-imagem"> 
-                    <img src="./assets/images/whey.png">
-                </div>
-                <div class="info-produto"> 
-                    <p>Whey</p>
-                    <p>R$200</p>
-                </div>
-                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
-            </div>
-
-            <div class="produto" id="1">
-                <div class="bg-imagem"> 
-                    <img src="./assets/images/whey.png">
-                </div>
-                <div class="info-produto"> 
-                    <p>Whey</p>
-                    <p>R$200</p>
-                </div>
-                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
-            </div> -->
         </div>
     <section>
 
