@@ -68,10 +68,10 @@ a{
 }
 
 #cadastrar:hover{
-    cursor: pointer;
     background-color: white;
 }
 
 #cadastrar:hover > a{
+    cursor: pointer;
     color: black;
 }

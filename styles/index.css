@@ -85,6 +85,9 @@ select {
     font-size: 1.1rem;
 }
 
+a{
+    text-decoration: none;
+}
 
 .account{
     display: flex;
@@ -93,14 +96,17 @@ select {
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    text-decoration: none;
 }
-.account > p{
+.account > a{
     color: #FFFFFF;
+    text-decoration: none;
 }
 
-.account:hover > p{
+/* .account:hover > a{
+    text-decoration: none;
     color: orange;
-}
+} */
 
 
 .cart{
@@ -115,9 +121,9 @@ select {
     color: #FFFFFF;
 }
 
-.cart:hover > p{
+/* .cart:hover > p{
     color: orange;
-}
+} */
 
 #inverter{
     transform: scaleX(-1);
@@ -136,7 +142,6 @@ section  h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* margin-left: 20px; */
     color: black;
 }
 
@@ -152,7 +157,6 @@ section  h1{
 .produto{
     display: flex;
     flex-direction: column;
-    /* padding: 10px; */
     width: 300px;
     gap: 10px;
     margin-bottom: 100px;
@@ -167,8 +171,6 @@ section  h1{
 .bg-imagem > img{
     max-width: 200px;
     max-height: 150px;
-    /* width: auto;
-    height: auto; */
 }
 
 .info-produto{
@@ -177,7 +179,7 @@ section  h1{
     justify-content: space-between;
     padding: 5px 15px 5px 15px;
     margin: 10px 0px 20px 0px;
-    /* */
+
 }
 .info-produto p{
     font-size: 1.1rem;

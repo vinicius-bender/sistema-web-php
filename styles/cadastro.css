@@ -30,7 +30,7 @@ input{
 
 #submit{
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 #submit:hover{
@@ -68,10 +68,10 @@ a{
 }
 
 #entrar:hover{
-    cursor: pointer;
     background-color: white;
 }
 
 #entrar:hover > a{
+    cursor: pointer;
     color: black;
 }
