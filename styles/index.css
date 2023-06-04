@@ -122,6 +122,16 @@ select {
     color: orange;
 }
 
+.sairBtn{
+    margin-left: 10px;
+    padding: 5px 10px 5px 10px;
+    color: black;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 #inverter{
     transform: scaleX(-1);
     letter-spacing: -5px;
