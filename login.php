@@ -1,10 +1,13 @@
 <?php
 
-if (isset($_COOKIE['login'])) {
-    header('Location: index.php');
-} else {
+session_start();
 
-    setcookie("login", "");
+if (isset($_SESSION['nome']) && isset($_SESSION['tipoUsuario']) === "") {
+    header('Location: index.php');
+}elseif (isset($_SESSION['nome']) && isset($_SESSION['tipoUsuario']) === "adm") {
+    header('Location: admin.php');
+}else {
+    setcookie("login", "", time() * 3600);
     if (isset($_POST['entrar'])) {
 
         $email = $_POST['email'];
@@ -16,18 +19,27 @@ if (isset($_COOKIE['login'])) {
             echo ("Deu ruim: " . mysqli_connect_error());
         }
 
-        $sql = "SELECT idUser, nome, senha, email FROM user WHERE email = '$email'";
+        $sql = "SELECT idUser, nome, senha, email, tipoUsuario FROM user WHERE email = '$email'";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                if ($row['email'] === $email && $row['senha'] === $senha) {
-                    session_start();
+                if ($row['email'] === $email && $row['senha'] === $senha && $row['tipoUsuario'] === "adm") {
                     $_COOKIE["login"] = true;
                     $_SESSION['id'] = $row['idUser'];
                     $_SESSION['nome'] = $row['nome'];
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['senha'] = $row['senha'];
+                    $_SESSION['tipoUsuario'] = $row['tipoUsuario'];
+                    mysqli_close($conn);
+                    header('Location: admin.php');
+                }elseif ($row['email'] === $email && $row['senha'] === $senha && $row['tipoUsuario'] === "") {
+                    $_COOKIE["login"] = true;
+                    $_SESSION['id'] = $row['idUser'];
+                    $_SESSION['nome'] = $row['nome'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['senha'] = $row['senha'];
+                    $_SESSION['tipoUsuario'] = $row['tipoUsuario'];
                     mysqli_close($conn);
                     header('Location: index.php');
                 }else{

@@ -20,12 +20,16 @@ header{
     text-decoration: none;
 }
 
-#phone{
+.home{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 5px;
+}
+
+.home:hover > a{
+    color: orange;
 }
 
 .custom-select{
@@ -38,7 +42,6 @@ header{
 .custom-select > i{
     font-size: 1rem;
 }
-
 
 select {
     background-color: transparent;
@@ -53,9 +56,9 @@ select {
     outline: none;
 }
 
-#idiomas > select,option{ 
+/* .idiomas > select,option{ 
     color: black;
-}
+} */
 
 .menu{
     width: 100%;
@@ -84,7 +87,7 @@ select {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .account{
@@ -95,17 +98,16 @@ select {
     gap: 10px;
     cursor: pointer;
 }
-.account > a{
+/* .account > a{
     color: #FFFFFF;
 }
 
 .account:hover > a{
     text-decoration: none;
     color: orange;
-}
+} */
 
-
-.cart{
+.editar{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -114,11 +116,28 @@ select {
     cursor: pointer;
     color: #FFFFFF;
 }
-.cart > p{
+.editar > a{
     color: #FFFFFF;
 }
 
-.cart:hover > p{
+.editar:hover > a{
+    color: orange;
+}
+
+.cadastrar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+.cadastrar > a{
+    color: #FFFFFF;
+}
+
+.cadastrar:hover > a{
     color: orange;
 }
 
@@ -141,85 +160,40 @@ select {
     letter-spacing: -10px;
 }
 
-
-/*Produtos*/
-
-
-form  h1{
-    font-size: 2em;
+/*Cadastro*/
+.formCadastro{
+    margin: 30px auto 20px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    color: black;
-}
-
-.produtos{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 20px;
-    
-}
-
-.produto{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    gap: 10px;
-    margin-bottom: 100px;
-    border: 1px solid black;
-    border-radius: 20px;
-}
-
-.bg-imagem{
-    text-align: center;
-}
-
-.bg-imagem > img{
-    max-width: 200px;
-    max-height: 150px;
-}
-
-.info-produto{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 5px 15px 5px 15px;
-    margin: 10px 0px 20px 0px;
-
-}
-.info-produto p{
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: black;
-}
-
-.bg-imagem{
+    max-width: 350px;
+    gap: 16px;
+    padding: 25px;
+    background-color: rgb(121, 121, 121);
     border: none;
     border-radius: 20px;
-    background-color: rgb(236, 236, 236);
 }
 
-.addCarrinho{
-    max-width: fit-content;
-    margin: auto;
-    margin-bottom: 10px;
-    padding: 12px;
+input{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.texto-preto{
     color: black;
-    font-size: 0.9rem;
-    background-color: #FFFFFF;
-    border: 1px solid black;
-    border-radius: 20px;
 }
 
-.addCarrinho:hover{
+#imagem{
+    padding: 6px;
+}
+
+#submit{
+    color: black;
     cursor: pointer;
-    background-color: #003D29;
-    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 600;
 }
-
 
 
 

@@ -44,43 +44,52 @@
 
 <?php
 
-if (isset($_POST["cadastrar"])) {
 
-  $nome = $_POST["nome"];
-  $email = $_POST["email"];
-  $senha = $_POST["senha"];
-  $endereco = $_POST["endereco"];
-  $cep = $_POST["cep"];
-  $cidade = $_POST["cidade"];
-  $estado = $_POST["estado"];
-  $existe = false;
+session_start();
 
-  $conn = mysqli_connect("localhost", "root", "", "loja");
+if (isset($_SESSION['nome'])) {
+    header('Location: index.php');
+} else {
+  if (isset($_POST["cadastrar"])) {
 
-  if (mysqli_connect_errno()){
-    echo ("Deu ruim: " . mysqli_connect_error());
-  }
-
-  $sql = "SELECT email FROM user";
-  $result = mysqli_query($conn, $sql);
-
-  while ($row = mysqli_fetch_assoc($result)){
-    if ($row['email'] === $email){
-      $existe = true;
+    $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+    $endereco = $_POST["endereco"];
+    $cep = $_POST["cep"];
+    $cidade = $_POST["cidade"];
+    $estado = $_POST["estado"];
+    $existe = false;
+  
+    $conn = mysqli_connect("localhost", "root", "", "loja");
+  
+    if (mysqli_connect_errno()){
+      echo ("Deu ruim: " . mysqli_connect_error());
+    }
+  
+    $sql = "SELECT email FROM user";
+    $result = mysqli_query($conn, $sql);
+  
+    while ($row = mysqli_fetch_assoc($result)){
+      if ($row['email'] === $email){
+        $existe = true;
+      }
+    }
+    if (!$existe){
+      mysqli_query($conn, "INSERT INTO user (nome, email, senha, endereco, cep, cidade, estado, tipoUsuario)
+      VALUES ('$nome', '$email', '$senha', '$endereco', '$cep', '$cidade', '$estado', '')");
+      mysqli_close($conn);
+      header('Location: login.php');
+    }else{
+      echo ("
+      <div id='ja-existe'> 
+        Este e-mail já está cadastrado!
+      <div>
+      ");
+      mysqli_close($conn);
     }
   }
-  if (!$existe){
-    mysqli_query($conn, "INSERT INTO user (nome, email, senha, endereco, cep, cidade, estado)
-    VALUES ('$nome', '$email', '$senha', '$endereco', '$cep', '$cidade', '$estado')");
-    mysqli_close($conn);
-    header('Location: login.php');
-  }else{
-    echo ("
-    <div id='ja-existe'> 
-      Este e-mail já está cadastrado!
-    <div>
-    ");
-    mysqli_close($conn);
-  }
 }
+
+
 ?>

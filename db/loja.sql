@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `loja`.`user` (
   `cep` VARCHAR(45) NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
+  `tipoUsuario` INT(1) NOT NULL,
   PRIMARY KEY (`iduser`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
