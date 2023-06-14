@@ -68,7 +68,7 @@ session_start();
 
 
 
-    <form action="admin.php" method="POST" class="formCadastro">
+    <form action="admin.php" method="POST" class="formCadastro" enctype="multipart/form-data">
         <input class="texto-preto" type="text" name="nomeProduto" placeholder="Nome do produto" required>
         <input class="texto-preto" type="number" name="valorProduto" placeholder="Valor do produto" required>
         <input id="imagem" type="file" name="imagemProduto" accept="image/*" required>
@@ -87,37 +87,27 @@ session_start();
 
 if (isset($_POST["cadastrar"])){
 
-
     $nome = $_POST["nomeProduto"];
     $valor = $_POST["valorProduto"];
-    $imagem = $_FILES["imagemProduto"];
+    $imagem =  "./assets/images/" . $_FILES["imagemProduto"]["name"];
+    move_uploaded_file($_FILES["imagemProduto"]["tmp_name"], $imagem);
 
+     // Create connection
+     $conn = mysqli_connect("localhost", "root", "", "loja");
+     // Check connection
+     if (!$conn) {
+         die("Connection failed: " . mysqli_connect_error());
+     }
 
-    $nomeFinal = time().'.png';
-
-	if (move_uploaded_file($imagem['tmp_name'], $nomeFinal)) {
-		$tamanhoImg = filesize($nomeFinal);
-
-		$mysqlImg = addslashes(fread(fopen($nomeFinal, "r"), $tamanhoImg));
-    }
-
-    $conn = mysqli_connect("localhost", "root", "", "loja");
-  
-    if (mysqli_connect_errno()){
-      echo ("Deu ruim: " . mysqli_connect_error());
-    }
-  
     $sql = "INSERT INTO product (nome, valor, imagem)
-    VALUES ('$nome', '$valor', '$mysqlImg')";
+    VALUES ('$nome', '$valor', '$imagem')";
     
     if (mysqli_query($conn, $sql)) {
         echo '<script>alert("Produto cadastrado com sucesso!")</script>';
     } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo '<script>alert("Erro ao cadastrar produto!")</script>';
     }
     mysqli_close($conn);
-    unlink($nomeFinal);
-
 }
 
 

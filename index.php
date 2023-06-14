@@ -14,7 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Styles-->
     <link type="text/css" rel="stylesheet" href="./styles/index.css">
-    <link type="text/css" rel="stylesheet" href="./styles/admin.css">
+    <!-- <link type="text/css" rel="stylesheet" href="./styles/admin.css"> -->
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +28,8 @@ session_start();
 </head>
 
 <body>
-        <?php
-        if (isset($_SESSION['nome']) && isset($_SESSION["tipoUsuario"]) === 'adm') {
+    <?php
+        if (isset($_SESSION['nome']) && isset($_SESSION["tipoUsuario"]) === "adm") {
             echo ("
         <header>
             <div class='logo'>
@@ -110,11 +110,12 @@ session_start();
             echo ("</div>");
         echo("</header>");
         }
-        ?>
+    ?>
 
     <form action='index.php' method='POST'>
         <h1>Produtos</h1>
         <div class='produtos'>
+    
     <?php
     // Create connection
     $conn = mysqli_connect("localhost", "root", "", "loja");
@@ -137,7 +138,7 @@ session_start();
             
                     <div class='produto' id='$idProduto'>
                         <div class='bg-imagem'> ");
-                        echo '<img src="data:image/png;base64,' . base64_encode($row['imagem']) . '" />';
+                        echo "<img src='$imagem'>'";
                         echo ("</div>
                         <div class='info-produto'> 
                             <p>$nome</p>
@@ -148,30 +149,15 @@ session_start();
             ");
         }
     } else {
-        echo "0 results";
+        // echo "0 results";
     }
 
     mysqli_close($conn);
 
     ?>
         
-        </div>
+    </div>
     <form>
-    <!-- <section>
-        <h1>Produtos</h1>
-        <div class="produtos">
-            <div class="produto" id="1">
-                <div class="bg-imagem"> 
-                    <img src="./assets/images/whey.png">
-                </div>
-                <div class="info-produto"> 
-                    <p>Whey Protein</p>
-                    <p>R$200</p>
-                </div>
-                <input class="addCarrinho" type="submit" name="addCarrinho" value="Adicionar ao carrinho">
-            </div>
-        </div>
-    <section> -->
 
 </body>
 

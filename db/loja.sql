@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `loja`.`user` (
   `cep` VARCHAR(45) NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
-  `tipoUsuario` INT(1) NOT NULL,
+  `tipoUsuario` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`iduser`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `loja`.`product` (
   `idproduct` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `valor` FLOAT(11) NOT NULL,
-  `image` BLOB NOT NULL,
+  `imagem` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idproduct`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
