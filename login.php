@@ -2,12 +2,17 @@
 
 session_start();
 
-if (isset($_SESSION['nome']) && isset($_SESSION['tipoUsuario']) === "") {
-    header('Location: index.php');
-}elseif (isset($_SESSION['nome']) && isset($_SESSION['tipoUsuario']) === "adm") {
-    header('Location: admin.php');
+if (isset($_SESSION['nome'])) {
+    if (isset($_SESSION['tipoUsuario']) === "adm"){
+        header('Location: admin.php');
+        exit;
+    }else{
+        header('Location: index.php');
+        exit;
+    }
+    
 }else {
-    setcookie("login", "", time() * 3600);
+    $login = false;
     if (isset($_POST['entrar'])) {
 
         $email = $_POST['email'];
@@ -25,7 +30,7 @@ if (isset($_SESSION['nome']) && isset($_SESSION['tipoUsuario']) === "") {
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($row['email'] === $email && $row['senha'] === $senha && $row['tipoUsuario'] === "adm") {
-                    $_COOKIE["login"] = true;
+                    $login  = true;
                     $_SESSION['id'] = $row['idUser'];
                     $_SESSION['nome'] = $row['nome'];
                     $_SESSION['email'] = $row['email'];
@@ -33,8 +38,9 @@ if (isset($_SESSION['nome']) && isset($_SESSION['tipoUsuario']) === "") {
                     $_SESSION['tipoUsuario'] = $row['tipoUsuario'];
                     mysqli_close($conn);
                     header('Location: admin.php');
-                }elseif ($row['email'] === $email && $row['senha'] === $senha && $row['tipoUsuario'] === "") {
-                    $_COOKIE["login"] = true;
+                    exit;
+                }elseif ($row['email'] === $email && $row['senha'] === $senha && $row['tipoUsuario'] === "comum") {
+                    $login  = true;
                     $_SESSION['id'] = $row['idUser'];
                     $_SESSION['nome'] = $row['nome'];
                     $_SESSION['email'] = $row['email'];
@@ -42,11 +48,12 @@ if (isset($_SESSION['nome']) && isset($_SESSION['tipoUsuario']) === "") {
                     $_SESSION['tipoUsuario'] = $row['tipoUsuario'];
                     mysqli_close($conn);
                     header('Location: index.php');
+                    exit;
                 }else{
-                    $_COOKIE["login"] = false;
+                    $login  = false;
                 }
             }
-            if ($_COOKIE["login"] === false){
+            if ($login  == false){
                 echo ("<div id='erroLogin'>Email ou senha errados!</div>");
             }
         }else {

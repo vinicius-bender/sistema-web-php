@@ -48,8 +48,12 @@
 session_start();
 
 if (isset($_SESSION['nome'])) {
-    header('Location: index.php');
+  if (isset($_SESSION['tipoUsuario']) === "comum"){
+    header('Location: admin.php');
+    exit;
+  }
 } else {
+  
   if (isset($_POST["cadastrar"])) {
 
     $nome = $_POST["nome"];
@@ -77,9 +81,10 @@ if (isset($_SESSION['nome'])) {
     }
     if (!$existe){
       mysqli_query($conn, "INSERT INTO user (nome, email, senha, endereco, cep, cidade, estado, tipoUsuario)
-      VALUES ('$nome', '$email', '$senha', '$endereco', '$cep', '$cidade', '$estado', '')");
+      VALUES ('$nome', '$email', '$senha', '$endereco', '$cep', '$cidade', '$estado', 'comum')");
       mysqli_close($conn);
       header('Location: login.php');
+      exit;
     }else{
       echo ("
       <div id='ja-existe'> 
