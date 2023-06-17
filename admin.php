@@ -47,7 +47,7 @@ if (isset($_POST["cadastrar"])){
     move_uploaded_file($_FILES["imagemProduto"]["tmp_name"], $imagem);
 
      // Create connection
-     $conn = mysqli_connect("localhost", "root", "", "loja");
+     $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
      // Check connection
      if (!$conn) {
          die("Connection failed: " . mysqli_connect_error());

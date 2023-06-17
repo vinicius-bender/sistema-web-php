@@ -65,7 +65,7 @@ if (isset($_SESSION['nome'])) {
     $estado = $_POST["estado"];
     $existe = false;
   
-    $conn = mysqli_connect("localhost", "root", "", "loja");
+    $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
   
     if (mysqli_connect_errno()){
       echo ("Deu ruim: " . mysqli_connect_error());
