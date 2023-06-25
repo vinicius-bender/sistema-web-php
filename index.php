@@ -67,7 +67,7 @@
            $valor = $row["valor"];
            $imagem = $row["imagem"];
            echo ("
-           <form action='index.php' method='POST'>
+           <form action='index.php' method='GET'>
                    <div class='produto'>
                        <div class='bg-imagem'> ");
                        echo "<img id='imagem-produto' src='$imagem'>'";
@@ -83,7 +83,6 @@
                            <input class='carrinho' type='submit' name='carrinho' value='Adicionar ao Carrinho'>
                            </div>
                    </div>
-               
            </form>
            ");
        }
@@ -102,15 +101,41 @@
 
 <?php
 
-if (isset($_POST['carrinho'])){
+if (isset($_GET['carrinho'])){
 
+    $nomeUsuario = $_SESSION['nome'];
 
+    // Create connection
+   $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
+   // Check connection
+   if (!$conn) {
+       die("Connection failed: " . mysqli_connect_error());
+   }
+    
+    $sql2 = "SELECT idUser FROM user where nome='$nomeUsuario'";
+    
+    $result2 = mysqli_query($conn, $sql2);
 
+    $row2 = mysqli_fetch_assoc($result2);
+    
+    $idUsuario = $row2['idUser'];
+
+    $idProd = $_GET['idProd'];
+    
+    $quant = 1;
+
+    mysqli_query($conn,"INSERT INTO cart (quantity, iduser, idproduct)
+    VALUES ('$quant', '$idUsuario', '$idProd')");
+    
+    mysqli_close($conn);
+
+    echo '<script>alert("Produto adicionado ao carrinho!")</script>';
+   
 }
 
 if (isset($_POST['sair'])) {
         session_destroy();
-        header('Location: index.php');
+        // header('Location: login.php');
         exit;
 }
 

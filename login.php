@@ -2,6 +2,8 @@
 
 session_start();
 
+include_once ("navlogin.php");
+
 if (isset($_SESSION['nome'])) {
     if (isset($_SESSION['tipoUsuario']) === "adm"){
         header('Location: admin.php');
@@ -36,6 +38,7 @@ if (isset($_SESSION['nome'])) {
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['senha'] = $row['senha'];
                     $_SESSION['tipoUsuario'] = $row['tipoUsuario'];
+                    setcookie('carrinho', $carrinhoCookie, time() + 3600);
                     mysqli_close($conn);
                     header('Location: admin.php');
                     exit;
@@ -46,6 +49,7 @@ if (isset($_SESSION['nome'])) {
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['senha'] = $row['senha'];
                     $_SESSION['tipoUsuario'] = $row['tipoUsuario'];
+                    setcookie('carrinho', $carrinhoCookie, time() + 3600);
                     mysqli_close($conn);
                     header('Location: index.php');
                     exit;
@@ -72,6 +76,7 @@ if (isset($_SESSION['nome'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Styles-->
+    <link type="text/css" rel="stylesheet" href="./styles/navlogin.css">
     <link type="text/css" rel="stylesheet" href="./styles/login.css">
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,7 +89,6 @@ if (isset($_SESSION['nome'])) {
 </head>
 
 <body>
-
     <form action="login.php" method="POST">
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="senha" placeholder="Senha" required>

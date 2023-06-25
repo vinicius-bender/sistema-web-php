@@ -27,11 +27,13 @@ input{
     padding: 10px;
     border: none;
     border-radius: 8px;
+    color: black;
 }
 
 #submit{
     font-size: 1rem;
     font-weight: 700;
+    color: black;
 }
 
 #submit:hover{

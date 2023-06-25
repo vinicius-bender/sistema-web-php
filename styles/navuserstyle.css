@@ -114,11 +114,11 @@ select {
     cursor: pointer;
     color: #FFFFFF;
 }
-.cart > p{
+.cart > a{
     color: #FFFFFF;
 }
 
-.cart:hover > p{
+.cart:hover > a{
     color: orange;
 }
 
