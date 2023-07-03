@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -43,9 +45,6 @@
 </html>
 
 <?php
-
-
-session_start();
 
 if (isset($_SESSION['nome'])) {
   if (isset($_SESSION['tipoUsuario']) === "comum"){

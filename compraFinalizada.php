@@ -2,74 +2,6 @@
     session_start();
 ?>
 
-<?php 
-// Create connection
-$conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-
-if (isset($_POST['add'])){
-
-    $id = $_POST['idProd'];
-
-    $quant = $quantidade + 1;
-
-    $sql = "UPDATE cart SET quantity = $quant WHERE idproduct = '$id'";
-
-    if ($conn->query($sql) === TRUE) {
-        // echo "Record updated successfully";
-      } else {
-        echo "Error updating record: " . $conn->error;
-      }
-}
-
-if (isset($_POST['sub'])){
-
-    $id = $_POST['idProd'];
-
-    $quant = $quantidade - 1;
-
-    if ($quantidade > 0){
-        $sql = "UPDATE cart SET quantity = $quant WHERE idproduct = '$id'";
-
-        if ($conn->query($sql) === TRUE) {
-            // echo "Record updated successfully";
-          } else {
-            echo "Error updating record: " . $conn->error;
-          }
-        
-    }else{
-        $sql = "DELETE FROM cart WHERE idproduct = '$id'";
-
-        if (mysqli_query($conn, $sql)) {
-        // echo "Record deleted successfully";
-        } else {
-        echo "Error deleting record: " . mysqli_error($conn);
-        }
-    }
-}
-
-
-if (isset($_POST['finaliza'])){
-
-    date_default_timezone_set('America/Sao_Paulo');
-    $cartid = $_POST['idCart'];
-    $saleDate = date("Y-m-d, H:i:s");
-
-    $sql = "INSERT INTO sale (saleDate, idcart)
-    VALUES ('$saleDate', '$cartid')";
-
-    if (!mysqli_query($conn, $sql)) {
-        echo '<script>alert("Erro ao finalizar compra!")</script>';
-    }
-    header("Location: compraFinalizada.php");
-}
-mysqli_close($conn);
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -78,7 +10,6 @@ mysqli_close($conn);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Styles-->
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link type='text/css' rel='stylesheet' href='./styles/cart.css'>
     <?php
@@ -99,8 +30,27 @@ mysqli_close($conn);
     <!--Design https://museshopcart.webflow.io/-->
     <title>SuplementaFit</title>
 </head>
-
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Obrigado pela confiaça!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Compra Efetuada com sucesso!
+            </div>
+            <div class="modal-footer">
+                <a href="index.php">Voltar ao Início</a>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <?php
         if (isset($_SESSION['nome']) && isset($_SESSION["tipoUsuario"]) === "adm") {
             include_once ("navadm.php");
@@ -176,5 +126,18 @@ mysqli_close($conn);
             ");
         }
     ?>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script>
+    $('#modalExemplo').modal('show');
+</script>
 </body>
 </html>
+
+<?php 
+
+?>
+

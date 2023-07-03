@@ -92,6 +92,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .vazio{
@@ -99,4 +100,31 @@
     color: black;
     text-align: center;
     margin-top: 100px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.modal-title, .modal-body, .modal-footer{
+    color: black;
+}
+
+.modal-body{
+    font-size: 1.6rem;
+}
+
+.fechar{
+    cursor: pointer;
+    color: black;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.fechar:hover{
+    color: #FFFFFF;
+    background-color: #003D29;
 }

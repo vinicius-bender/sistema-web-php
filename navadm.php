@@ -1,5 +1,4 @@
 <?php 
-
 echo ("
 <header>
     <div class='logo'>

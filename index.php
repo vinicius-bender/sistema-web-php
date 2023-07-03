@@ -1,28 +1,68 @@
-<?php
-    session_start();
-?>
+<?php session_start(); ?>
 
+<?php
+    if (isset($_GET['carrinho'])){
+
+        if (isset($_SESSION['nome'])){
+            $nomeUsuario = $_SESSION['nome'];
+    
+            // Create connection
+            $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
+            // Check connection
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+        
+            $sql2 = "SELECT idUser FROM user where nome='$nomeUsuario'";
+            
+            $result2 = mysqli_query($conn, $sql2);
+    
+            $row2 = mysqli_fetch_assoc($result2);
+            
+            $idUsuario = $row2['idUser'];
+    
+            $idProd = $_GET['idProd'];
+            
+            $quant = 1;
+    
+            mysqli_query($conn,"INSERT INTO cart (quantity, iduser, idproduct)
+            VALUES ('$quant', '$idUsuario', '$idProd')");
+            
+            mysqli_close($conn);
+    
+            echo '<script>alert("Produto adicionado ao carrinho!")</script>';
+        }else{
+            header('Location: login.php');
+            exit;
+        }
+    }
+    
+    if (isset($_POST['sair'])) {
+            session_destroy();
+            header('Location: login.php');
+            exit;
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Styles-->
-    <?php 
-    if (isset($_SESSION['nome']) && isset($_SESSION["tipoUsuario"]) === "adm"){
-        echo ("
-        <link type='text/css' rel='stylesheet' href='./styles/navadmstyle.css'>
-        <link type='text/css' rel='stylesheet' href='./styles/admin.css'>");
-    }else{
-        echo ("
-        <link type='text/css' rel='stylesheet' href='./styles/navuserstyle.css'>
-        <link type='text/css' rel='stylesheet' href='./styles/index.css'>");
-    }
-        
-    ?>
+
+    <?php
+        if (isset($_SESSION['nome']) && isset($_SESSION["tipoUsuario"]) === "adm"){
+            echo("
+            <link type='text/css' rel='stylesheet' href='./styles/navadmstyle.css'>
+            <link type='text/css' rel='stylesheet' href='./styles/admin.css'>");
+            }else{
+            echo("
+            <link type='text/css' rel='stylesheet' href='./styles/navuserstyle.css'>
+            <link type='text/css' rel='stylesheet' href='./styles/index.css'>");
+        }
+?>
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,17 +76,17 @@
 </head>
 
 <body>
-    <?php
-        if (isset($_SESSION['nome']) && isset($_SESSION["tipoUsuario"]) === "adm") {
+
+<?php
+    if (isset($_SESSION['nome']) && isset($_SESSION["tipoUsuario"]) === "adm") {
             include_once ("navadm.php");
-        } 
-        else {
+        }else {
             include_once ("navuser.php");
         }
-    ?>
+?>
     
-    <?php
-   echo ("<h1>Produtos</h1>");
+<?php
+    echo ("<h1>Produtos</h1>");
 
    echo ("<section>");
    // Create connection
@@ -87,56 +127,10 @@
            ");
        }
    } else {
-       // echo "0 results";
+
    }
    mysqli_close($conn);
    echo ("</section>");
-   ?>  
-        
-
-
-</body>
-
-</html>
-
-<?php
-
-if (isset($_GET['carrinho'])){
-
-    $nomeUsuario = $_SESSION['nome'];
-
-    // Create connection
-   $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-   // Check connection
-   if (!$conn) {
-       die("Connection failed: " . mysqli_connect_error());
-   }
-    
-    $sql2 = "SELECT idUser FROM user where nome='$nomeUsuario'";
-    
-    $result2 = mysqli_query($conn, $sql2);
-
-    $row2 = mysqli_fetch_assoc($result2);
-    
-    $idUsuario = $row2['idUser'];
-
-    $idProd = $_GET['idProd'];
-    
-    $quant = 1;
-
-    mysqli_query($conn,"INSERT INTO cart (quantity, iduser, idproduct)
-    VALUES ('$quant', '$idUsuario', '$idProd')");
-    
-    mysqli_close($conn);
-
-    echo '<script>alert("Produto adicionado ao carrinho!")</script>';
-   
-}
-
-if (isset($_POST['sair'])) {
-        session_destroy();
-        // header('Location: login.php');
-        exit;
-}
-
 ?>
+</body>
+</html>

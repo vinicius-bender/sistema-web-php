@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 include_once ("navlogin.php");
@@ -65,7 +64,6 @@ if (isset($_SESSION['nome'])) {
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
