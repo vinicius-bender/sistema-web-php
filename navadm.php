@@ -12,7 +12,7 @@ echo ("
     
         <div class='home'>
             <i class='fa-solid fa-house' style='color: #ffffff;'></i>
-            <a href='index.php'>Home</a>
+            <a href='index.php'>Inicio</a>
         </div>
 
         <div class='editar'>

@@ -25,8 +25,8 @@
             
             $quant = 1;
     
-            mysqli_query($conn,"INSERT INTO cart (quantity, iduser, idproduct)
-            VALUES ('$quant', '$idUsuario', '$idProd')");
+            mysqli_query($conn,"INSERT INTO cart (quantity, iduser, idproduct, estado)
+            VALUES ('$quant', '$idUsuario', '$idProd', '0')");
             
             mysqli_close($conn);
     

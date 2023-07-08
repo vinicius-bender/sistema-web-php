@@ -70,7 +70,7 @@
 
         $sql = "SELECT p.idproduct as pidproduct, p.nome as pnome, p.valor as pvalor, p.imagem as pimagem,
                 c.idcart as cidcart, c.quantity as cquantity, c.iduser as ciduser, c.idproduct as cidprodut,
-                u.iduser as uiduser
+                c.estado as cestado, u.iduser as uiduser
                 FROM product as p, cart as c, user as u
                 WHERE c.iduser = u.iduser AND p.idproduct = c.idproduct";
         $result = mysqli_query($conn, $sql);
@@ -79,15 +79,18 @@
             // output data of each row
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($_SESSION['id'] === $row["ciduser"]){
-                    $temItem = true;
+                    $idUser = $row["ciduser"];
                     $idProduto = $row["pidproduct"];
                     $nome = $row["pnome"];
                     $valor = $row["pvalor"];
                     $imagem = $row["pimagem"];
                     $quantidade = $row["cquantity"];
                     $cartId = $row["cidcart"];
-                    echo ("
-                    <form class='formClass' action='cart.php' method='POST'>
+                    $estado = $row["cestado"];
+                    if ($estado == '0'){
+                        $temItem = true;
+                        echo ("
+                        <form class='formClass' action='cart.php' method='POST'>
                             <div class='produto'>
                                 <div class='bg-imagem'>");
                                 echo "<img id='imagem-produto' src='$imagem'>'";
@@ -109,13 +112,14 @@
                     ");
                 }
             }
+            }
         } else {
             $temItem = false;
         }
-        mysqli_close($conn);
         if ($temItem){
             echo ("
                 <form action='cart.php' class='formBtnCompra' method='POST'>
+                    <input class='info-input' type='hidden' name='idUsuario' value='$idUser'>
                     <input class='info-input' type='hidden' name='idCart' value='$cartId'>
                     <input class='FinalizaCompra' type='submit' name='finaliza' value='Finalizar Compra'>
                 </form>
@@ -125,6 +129,7 @@
                 <p class='vazio'>Carrinho Vazio</p>
             ");
         }
+        mysqli_close($conn);
     ?>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

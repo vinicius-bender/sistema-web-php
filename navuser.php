@@ -14,15 +14,18 @@ echo ("
 <p id='inverter'>💪</p>
 </div>
 ");
-echo (
-    "<div class='info'>
-        <div class='cart'>
-            <i class='fa-solid fa-cart-shopping' style='color: #ffffff;'></i>
-            <a href='cart.php'>Carrinho</a>
-    </div>
-");
+if (isset($_SESSION['nome'])) {
+    echo (
+        "<div class='info'>
+            <div class='cart'>
+                <i class='fa-solid fa-cart-shopping' style='color: #ffffff;'></i>
+                <a href='cart.php'>Carrinho</a>
+        </div>
+    ");
+}
+
 echo (" <div class='account'>
-                    <a href='index.php'> <i class='fa-solid fa-user' style='color: #ffffff;'></i> </a> ");
+                    <a > <i class='fa-solid fa-user' style='color: #ffffff;'></i> </a> ");
 if (isset($_SESSION['nome'])) {
     echo strtoupper(substr($_SESSION['nome'], 0, 1));
     echo ("<form action='index.php' method='POST'>
@@ -30,7 +33,7 @@ if (isset($_SESSION['nome'])) {
             </form>  
         ");
 } else {
-    echo ("<a href='login.php'>Entrar</a>");
+    echo ("<a class='loginBtn' href='login.php'>Entrar</a>");
 }
 echo ("</div>");
 echo ("</div>");

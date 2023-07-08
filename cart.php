@@ -57,14 +57,24 @@ if (isset($_POST['finaliza'])){
 
     date_default_timezone_set('America/Sao_Paulo');
     $cartid = $_POST['idCart'];
+    $idUser = $_POST['idUsuario'];
     $saleDate = date("Y-m-d, H:i:s");
 
-    $sql = "INSERT INTO sale (saleDate, idcart)
-    VALUES ('$saleDate', '$cartid')";
+    $sql = "INSERT INTO sale (saleDate, idcart, iduser)
+    VALUES ('$saleDate', '$cartid', '$idUser')";
 
     if (!mysqli_query($conn, $sql)) {
         echo '<script>alert("Erro ao finalizar compra!")</script>';
+
+    }else{
+        
+        $sql = "UPDATE cart SET estado = '1' WHERE iduser = '$idUser'";
+        
+        if (!mysqli_query($conn, $sql)) {
+            echo '<script>alert("Erro ao finalizar compra!")</script>';
+        }
     }
+
     header("Location: compraFinalizada.php");
 }
 mysqli_close($conn);
@@ -120,24 +130,26 @@ mysqli_close($conn);
 
         $sql = "SELECT p.idproduct as pidproduct, p.nome as pnome, p.valor as pvalor, p.imagem as pimagem,
                 c.idcart as cidcart, c.quantity as cquantity, c.iduser as ciduser, c.idproduct as cidprodut,
-                u.iduser as uiduser
+                c.estado as cestado, u.iduser as uiduser
                 FROM product as p, cart as c, user as u
                 WHERE c.iduser = u.iduser AND p.idproduct = c.idproduct";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
-            // output data of each row
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($_SESSION['id'] === $row["ciduser"]){
-                    $temItem = true;
+                    $idUser = $row["ciduser"];
                     $idProduto = $row["pidproduct"];
                     $nome = $row["pnome"];
                     $valor = $row["pvalor"];
                     $imagem = $row["pimagem"];
                     $quantidade = $row["cquantity"];
                     $cartId = $row["cidcart"];
-                    echo ("
-                    <form class='formClass' action='cart.php' method='POST'>
+                    $estado = $row["cestado"];
+                    if ($estado === '0'){
+                        $temItem = true;
+                        echo ("
+                        <form class='formClass' action='cart.php' method='POST'>
                             <div class='produto'>
                                 <div class='bg-imagem'>");
                                 echo "<img id='imagem-produto' src='$imagem'>'";
@@ -157,15 +169,16 @@ mysqli_close($conn);
                             </div>
                     </form>
                     ");
+                    }
                 }
             }
-        } else {
+        }else{
             $temItem = false;
         }
-        mysqli_close($conn);
         if ($temItem){
             echo ("
                 <form action='cart.php' class='formBtnCompra' method='POST'>
+                    <input class='info-input' type='hidden' name='idUsuario' value='$idUser'>
                     <input class='info-input' type='hidden' name='idCart' value='$cartId'>
                     <input class='FinalizaCompra' type='submit' name='finaliza' value='Finalizar Compra'>
                 </form>
@@ -175,6 +188,7 @@ mysqli_close($conn);
                 <p class='vazio'>Carrinho Vazio</p>
             ");
         }
+        mysqli_close($conn);
     ?>
 </body>
 </html>

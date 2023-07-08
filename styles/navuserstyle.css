@@ -140,3 +140,15 @@ select {
 #espacamento{
     letter-spacing: -10px;
 }
+
+.loginBtn{
+    font-size: 1.1rem;
+}
+
+.fa-user{
+    font-size: 1rem;
+}
+
+.inicio{
+    font-size: 1.1rem;
+}

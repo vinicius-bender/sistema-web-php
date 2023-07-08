@@ -16,7 +16,7 @@ echo ("
 ");
 
 echo (" <div class='account'>
-        <i class='fa-solid fa-user' style='color: #ffffff;'></i> 
+        <i class='fa-solid fa-house' style='color: #ffffff;'></i> 
         <a href='index.php'>Inicio</a>");
 echo ("</div>");
 echo("</header>");
