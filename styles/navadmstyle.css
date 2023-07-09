@@ -141,6 +141,23 @@ select {
     color: orange;
 }
 
+.relatorio{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+.relatorio > a{
+    color: #FFFFFF;
+}
+
+.relatorio:hover > a{
+    color: orange;
+}
+
 .sairBtn{
     margin-left: 10px;
     padding: 5px 10px 5px 10px;

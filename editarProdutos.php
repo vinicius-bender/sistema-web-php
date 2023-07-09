@@ -1,5 +1,44 @@
 <?php
     session_start();
+
+    if (isset($_POST["editarProduto"])) {
+
+        $id = $_POST["idProd"];
+        $nome = $_POST["nomeProduto"];
+        $valor = $_POST["valorProduto"];
+    
+    
+         // Create connection
+         $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
+         // Check connection
+         if (!$conn) {
+             die("Connection failed: " . mysqli_connect_error());
+         }
+         
+         if (!isset($_FILES["imagemProduto"])){
+            $sql = "UPDATE product SET nome = '$nome',  valor = '$valor' WHERE idProduct = '$id'";
+         }else{
+            $imagem =  "./assets/images/" . $_FILES["imagemProduto"]["name"];
+            move_uploaded_file($_FILES["imagemProduto"]["tmp_name"], $imagem);
+            $sql = "UPDATE product SET nome = '$nome',  valor = '$valor',  imagem = '$imagem' WHERE idProduct = '$id'";
+         }
+        
+        if (mysqli_query($conn, $sql)) {
+            echo '<script>alert("Produto alterado com sucesso!")</script>';
+        } else {
+            echo '<script>alert("Erro ao alterar o produto!")</script>';
+        }
+        mysqli_close($conn);
+        // sleep(2);
+        // header('Location: editarProdutos.php');
+        // exit;
+    }
+    
+    if (isset($_POST['sair'])) {
+            session_destroy();
+            header('Location: index.php');
+            exit;
+    }
 ?>
 
 
@@ -27,10 +66,9 @@
 
 <body>
     <?php
-        include_once ("navadm.php");
-    ?>
 
-    <?php
+    include_once("navadm.php");
+
 
     echo ("<h1>Editar informações dos produtos</h1>");
 
@@ -86,45 +124,4 @@
 
 </body>
 </html>
-
-<?php
-
-if (isset($_POST["editarProduto"])) {
-
-    $id = $_POST["idProd"];
-    $nome = $_POST["nomeProduto"];
-    $valor = $_POST["valorProduto"];
-
-
-     // Create connection
-     $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-     // Check connection
-     if (!$conn) {
-         die("Connection failed: " . mysqli_connect_error());
-     }
-     
-     if (!isset($_FILES["imagemProduto"])){
-        $sql = "UPDATE product SET nome = '$nome',  valor = '$valor' WHERE idProduct = '$id'";
-     }else{
-        $imagem =  "./assets/images/" . $_FILES["imagemProduto"]["name"];
-        move_uploaded_file($_FILES["imagemProduto"]["tmp_name"], $imagem);
-        $sql = "UPDATE product SET nome = '$nome',  valor = '$valor',  imagem = '$imagem' WHERE idProduct = '$id'";
-     }
-    
-    if (mysqli_query($conn, $sql)) {
-        // echo '<script>alert("Produto alterado com sucesso!")</script>';
-    } else {
-        echo '<script>alert("Erro ao alterar o produto!")</script>';
-    }
-    mysqli_close($conn);
-}
-
-if (isset($_POST['sair'])) {
-        session_destroy();
-        header('Location: index.php');
-        exit;
-}
-
-
-?>
 

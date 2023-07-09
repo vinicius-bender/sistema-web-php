@@ -10,10 +10,10 @@ echo ("
 
     <div class='info'>
     
-        <div class='home'>
+        <!-- <div class='home'>
             <i class='fa-solid fa-house' style='color: #ffffff;'></i>
             <a href='index.php'>Inicio</a>
-        </div>
+        </div> -->
 
         <div class='editar'>
             <i class='fa-sharp fa-solid fa-pen' style='color: #ffffff;'></i>
@@ -23,6 +23,11 @@ echo ("
         <div class='cadastrar'>
             <i class='fa-solid fa-floppy-disk' style='color: #ffffff;'></i>
             <a href='admin.php'>Cadastrar</a>
+        </div>
+
+        <div class='relatorio'>
+            <i class='fa-solid fa-file' style='color: #ffffff;'></i>
+            <a href='relatorio.php'>Relatorio</a>
         </div>
     
         ");

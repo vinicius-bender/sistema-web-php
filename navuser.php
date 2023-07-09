@@ -14,13 +14,18 @@ echo ("
 <p id='inverter'>💪</p>
 </div>
 ");
+
 if (isset($_SESSION['nome'])) {
     echo (
         "<div class='info'>
-            <div class='cart'>
-                <i class='fa-solid fa-cart-shopping' style='color: #ffffff;'></i>
-                <a href='cart.php'>Carrinho</a>
-        </div>
+            <div class='home'>
+                <i class='fa-solid fa-house' style='color: #ffffff;'></i>
+                <a href='index.php'>Inicio</a>
+            </div>
+                <div class='cart'>
+                    <i class='fa-solid fa-cart-shopping' style='color: #ffffff;'></i>
+                    <a href='cart.php'>Carrinho</a>
+            </div>
     ");
 }
 

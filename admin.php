@@ -23,9 +23,11 @@ session_start();
 </head>
 
 <body>
-        <?php 
-            include_once ("navadm.php");
-        ?>
+      
+    <?php 
+        include_once("navadm.php");
+    ?>
+
     <form action="admin.php" method="POST" class="formCadastro" enctype="multipart/form-data">
         <input class="texto-preto" type="text" name="nomeProduto" placeholder="Nome do produto" required>
         <input class="texto-preto" type="number" name="valorProduto" placeholder="Valor do produto" required>

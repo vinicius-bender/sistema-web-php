@@ -87,6 +87,23 @@ select {
     font-size: 1.1rem;
 }
 
+.home{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.home > a{
+    color: #FFFFFF;
+}
+
+.home:hover > a{
+    text-decoration: none;
+    color: orange;
+}
+
 .account{
     display: flex;
     flex-direction: row;
@@ -97,6 +114,7 @@ select {
 }
 .account > a{
     color: #FFFFFF;
+    text-decoration: none;
 }
 
 .account:hover > a{
@@ -116,6 +134,7 @@ select {
 }
 .cart > a{
     color: #FFFFFF;
+    text-decoration: none;
 }
 
 .cart:hover > a{

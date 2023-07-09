@@ -15,7 +15,7 @@ if (isset($_POST['add'])){
 
     $id = $_POST['idProd'];
 
-    $quant = $quantidade + 1;
+    $quant = $_POST['quant'] + 1;
 
     $sql = "UPDATE cart SET quantity = $quant WHERE idproduct = '$id'";
 
@@ -30,9 +30,9 @@ if (isset($_POST['sub'])){
 
     $id = $_POST['idProd'];
 
-    $quant = $quantidade - 1;
+    $quant = $_POST['quant'] - 1;
 
-    if ($quantidade > 0){
+    if ($quant > 0){
         $sql = "UPDATE cart SET quantity = $quant WHERE idproduct = '$id'";
 
         if ($conn->query($sql) === TRUE) {
@@ -88,7 +88,6 @@ mysqli_close($conn);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Styles-->
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link type='text/css' rel='stylesheet' href='./styles/cart.css'>
     <?php
@@ -159,9 +158,10 @@ mysqli_close($conn);
                                         <input class='info-input' type='hidden' name='idProd' value='$idProduto'>
                                         <input class='info-input' type='hidden' name='nomeProduto' value='$nome'>
                                         <input class='info-input' type='hidden' name='valorProduto' value='$valor'>
+                                        // <input class='info-inpu' type='hidden' name='quant' value='$quantidade'>
                                         <input class='btn' type='submit' name='add' value='+'>
                                         <input class='btn' type='submit' name='sub' value='-'>
-                                        <input disabled class='disabled-input' type='text' name='quant' value='$quantidade'>
+                                        <input class='disabled-input' type='text' name='quant' value='$quantidade'>
                                         <p>$nome</p>
                                         <p>R$$valor</p>
                                     </div>
