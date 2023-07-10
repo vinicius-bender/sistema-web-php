@@ -35,7 +35,7 @@ CREATE TABLE `cart` (
   KEY `fk_cart_product1_idx` (`idproduct`),
   CONSTRAINT `fk_cart_product1` FOREIGN KEY (`idproduct`) REFERENCES `product` (`idproduct`),
   CONSTRAINT `fk_cart_user` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +60,7 @@ CREATE TABLE `product` (
   `valor` float NOT NULL,
   `imagem` varchar(100) NOT NULL,
   PRIMARY KEY (`idproduct`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,6 +69,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (13,'Whey Protein',100,'./assets/images/whey.png'),(14,'Creatina',100,'./assets/images/creatina.png'),(15,'Pré-treino',80,'./assets/images/pre-treino.png'),(16,'BCAA',150,'./assets/images/BCAA.png');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +88,7 @@ CREATE TABLE `sale` (
   PRIMARY KEY (`idsale`),
   KEY `fk_sale_cart1_idx` (`idcart`),
   CONSTRAINT `fk_sale_cart1` FOREIGN KEY (`idcart`) REFERENCES `cart` (`idcart`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +118,7 @@ CREATE TABLE `user` (
   `estado` varchar(45) NOT NULL,
   `tipoUsuario` varchar(45) NOT NULL,
   PRIMARY KEY (`iduser`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,6 +127,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'admin','admin@gmail.com','admin','Casa do Admin','98400000','Frederico Westphalen','Rio Grande do Sul','adm'),(9,'Vinicius','vinicius@email.com','123','Rua do Vinicius','98400000','Frederico Westphalen','Rio Grande do Sul','comum'),(10,'Arthur Martins','arthurmartins@email.com','123','Casa do Arthur','98400000','Brasília','Distrito Federal','comum');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -138,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-09  3:20:56
+-- Dump completed on 2023-07-10  0:10:57
