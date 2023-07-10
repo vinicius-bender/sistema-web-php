@@ -32,7 +32,9 @@ if (isset($_SESSION['nome'])) {
 echo (" <div class='account'>
                     <a > <i class='fa-solid fa-user' style='color: #ffffff;'></i> </a> ");
 if (isset($_SESSION['nome'])) {
-    echo strtoupper(substr($_SESSION['nome'], 0, 1));
+    $Nome = $_SESSION['nome'];
+    $primeiroNome = explode(" ", $Nome);
+    echo ($primeiroNome[0]);
     echo ("<form action='index.php' method='POST'>
              <button class='sairBtn' type='submit' value='Sair' name='sair'>Sair</button>
             </form>  
