@@ -6,12 +6,7 @@
         if (isset($_SESSION['nome'])){
             $nomeUsuario = $_SESSION['nome'];
     
-            // Create connection
-            $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-            // Check connection
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
+            include("./db/conexao.php");
         
             $sql2 = "SELECT idUser FROM user where nome='$nomeUsuario'";
             
@@ -89,12 +84,7 @@
     echo ("<h1>Produtos</h1>");
 
    echo ("<section>");
-   // Create connection
-   $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-   // Check connection
-   if (!$conn) {
-       die("Connection failed: " . mysqli_connect_error());
-   }
+   include("./db/conexao.php");
 
    $sql = "SELECT idproduct, nome, valor, imagem FROM product";
    $result = mysqli_query($conn, $sql);

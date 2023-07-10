@@ -61,18 +61,14 @@
     
     <?php 
         $temItem = false;
-        // Create connection
-        $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
+        
+        include("./db/conexao.php");
 
         $sql = "SELECT p.idproduct as pidproduct, p.nome as pnome, p.valor as pvalor, p.imagem as pimagem,
-                c.idcart as cidcart, c.quantity as cquantity, c.iduser as ciduser, c.idproduct as cidprodut,
-                c.estado as cestado, u.iduser as uiduser
-                FROM product as p, cart as c, user as u
-                WHERE c.iduser = u.iduser AND p.idproduct = c.idproduct";
+        c.idcart as cidcart, c.quantity as cquantity, c.iduser as ciduser, c.idproduct as cidprodut,
+        c.estado as cestado, u.iduser as uiduser
+        FROM product as p, cart as c, user as u
+        WHERE c.iduser = u.iduser AND p.idproduct = c.idproduct";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {

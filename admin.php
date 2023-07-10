@@ -27,7 +27,7 @@ session_start();
     <?php 
         include_once("navadm.php");
     ?>
-
+    <h2>Cadastro de Produtos</h2>
     <form action="admin.php" method="POST" class="formCadastro" enctype="multipart/form-data">
         <input class="texto-preto" type="text" name="nomeProduto" placeholder="Nome do produto" required>
         <input class="texto-preto" type="number" name="valorProduto" placeholder="Valor do produto" required>
@@ -48,12 +48,7 @@ if (isset($_POST["cadastrar"])){
     $imagem =  "./assets/images/" . $_FILES["imagemProduto"]["name"];
     move_uploaded_file($_FILES["imagemProduto"]["tmp_name"], $imagem);
 
-     // Create connection
-     $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-     // Check connection
-     if (!$conn) {
-         die("Connection failed: " . mysqli_connect_error());
-     }
+    include("./db/conexao.php");
 
     $sql = "INSERT INTO product (nome, valor, imagem)
     VALUES ('$nome', '$valor', '$imagem')";

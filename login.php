@@ -19,11 +19,7 @@ if (isset($_SESSION['nome'])) {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
-        $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-
-        if (mysqli_connect_errno()) {
-            echo ("Deu ruim: " . mysqli_connect_error());
-        }
+        include("./db/conexao.php");
 
         $sql = "SELECT idUser, nome, senha, email, tipoUsuario FROM user WHERE email = '$email'";
         $result = mysqli_query($conn, $sql);

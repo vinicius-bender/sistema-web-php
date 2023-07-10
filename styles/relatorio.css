@@ -10,3 +10,9 @@ a{
 span{
     color: #006e4a;
 }
+
+h2{
+    text-align: center;
+    color: black;
+    margin-bottom: 40px;
+}

@@ -34,7 +34,7 @@
 .infos{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     gap: 50px;
 }
@@ -127,4 +127,38 @@ a{
 .fechar:hover{
     color: #FFFFFF;
     background-color: #003D29;
+}
+
+.btn-carrinho{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.informacoes-produto{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.informacoes-produto p{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.verde{
+    color: #006e4a;
+}
+
+#valorTotal{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }

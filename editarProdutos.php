@@ -8,12 +8,7 @@
         $valor = $_POST["valorProduto"];
     
     
-         // Create connection
-         $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-         // Check connection
-         if (!$conn) {
-             die("Connection failed: " . mysqli_connect_error());
-         }
+        include("./db/conexao.php");
          
          if (!isset($_FILES["imagemProduto"])){
             $sql = "UPDATE product SET nome = '$nome',  valor = '$valor' WHERE idProduct = '$id'";
@@ -29,10 +24,26 @@
             echo '<script>alert("Erro ao alterar o produto!")</script>';
         }
         mysqli_close($conn);
-        // sleep(2);
-        // header('Location: editarProdutos.php');
-        // exit;
     }
+
+    if (isset($_POST["removerProduto"])) {
+
+        $id = $_POST["idProd"];
+    
+        include("./db/conexao.php");
+         
+        
+        $sql = "DELETE FROM product WHERE idproduct = $id";
+    
+        if (mysqli_query($conn, $sql)) {
+            echo '<script>alert("Produto removido com sucesso!")</script>';
+        } else {
+            echo '<script>alert("Erro ao remover o produto!")</script>';
+        }
+        mysqli_close($conn);
+    }
+
+    
     
     if (isset($_POST['sair'])) {
             session_destroy();
@@ -70,15 +81,11 @@
     include_once("navadm.php");
 
 
-    echo ("<h1>Editar informações dos produtos</h1>");
+    echo ("<h2>Editar informações dos produtos</h2>");
 
     echo ("<section>");
-    // Create connection
-    $conn = mysqli_connect("localhost", "root", "rootadmin", "loja");
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+    
+    include("./db/conexao.php");
 
     $sql = "SELECT idproduct, nome, valor, imagem FROM product";
     $result = mysqli_query($conn, $sql);
@@ -108,6 +115,7 @@
                             </div>
                             <input id='edit-imagem' type='file' name='imagemProduto' accept='image/*'>
                             <input class='EditarProduto' type='submit' name='editarProduto' value='Editar produto'>
+                            <input class='RemoverProduto' type='submit' name='removerProduto' value='Remover produto'>
                         </div>
                         
                     </div>
