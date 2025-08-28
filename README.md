@@ -1,41 +1,51 @@
-<h1 align="center"> SuplementaFit- Aplicação de Programação Web </h1> 
+# 🛒 SuplementaFit – Web Programming Application  
 
-<h2> Descrição do Projeto </h2>
-<br>
-Aplicação Web simulando um e-commerce para aferir o conhecimento na linguagem PHP.
-<br>
+## 📌 Project Description  
 
-## :hammer: Funcionalidades do projeto 
+**SuplementaFit** is a web application that simulates an e-commerce platform, developed to consolidate knowledge in the **PHP language** and web development practices.  
 
-- `Registro e Login Autenticado`: Registro de usuário com email e senha requerindo algumas informações para a conta e Login autenticando os usuários já cadastradas na base de dados.
-- `Compras e Finalização das compras`: Compras de produtos e Finalização dessas compras removendo as do carrinho de compras.
-- `Criar, Alterar e Excluir produtos`: Cadastro, alteração e exclusão de produtos em que usuários comuns irão optar por comprar.
+## 🔨 Features  
 
-## 📁 Acesso ao projeto 
+- ✅ **User Registration and Authenticated Login**  
+  - User registration with email and password, requiring account information.  
+  - Authentication of registered users against the database.  
 
-Você pode acessar o <a href="https://github.com/vinicius-bender/sistema-web-php">código fonte do projeto</a> ou <a href="https://github.com/vinicius-bender/sistema-web-php/archive/refs/heads/main.zip">baixá-lo</a>.
+- ✅ **Shopping and Checkout**  
+  - Add products to the cart.  
+  - Complete the checkout process, automatically removing purchased products from the cart.  
 
-### 🛠️ Abrir e rodar o projeto
-Após baixar o projeto, você devera importar a base de dados arquivo <a href="https://github.com/vinicius-bender/sistema-web-php/blob/main/db/loja.sql">loja.sql</a> para o seu gerenciador de banco de dados. (Necessitando ter compatibilidade com MySQL).
-<br>
-<br>
-    <ul>
-        <li>
-             Copie o código SQL ou importe para seu <b>SGBD</b>.
-        </li> 
-        <li>
-             Coloque o cógido baixado anteriormente em seu <b>Localhost </b>.
-        </li>
-        <li>
-             Abra seu navegador e acesse <b>Localhost/CaminhoParaoProjeto</b>.
-        </li>   
-    </ul> 
+- ✅ **Product Management (CRUD)**  
+  - Create, update, and delete products.  
+  - Admins manage the products available for purchase by regular users.  
 
-Lembrando que para entrar no sistema como administrador é necessario inserir o mesmo diretamente na base de dados e usuários comuns devem ser cadastrados diretamento na aplicação.
+## 📁 Access to the Project  
 
-## ✔️ Técnicas e tecnologias utilizadas
+You can access the source code of the project or download it.  
 
-- `PHP 8.0.28`
-- `CSS3`
-- `HTML5`
-- `MySQL 8.0.33`
+## 🛠️ How to Run the Project  
+
+1. Download the project code.  
+2. Import the database file `loja.sql` into your **MySQL** database manager.  
+   - Either copy the SQL code or directly import the file.  
+3. Place the downloaded code in your **Localhost** directory.  
+4. Open your browser and go to:  http://localhost/PathToProject
+
+⚠️ To access the system as an **administrator**, you must insert the admin user directly into the database.  
+Regular users must register directly through the application.  
+
+## ✔️ Technologies Used  
+
+- **PHP** 8.0.28  
+- **MySQL** 8.0.33  
+- **HTML5**  
+- **CSS3**  
+
+## 🔮 Future Improvements  
+
+Some possible enhancements to extend the project:
+
+- **Shopping Cart Persistence** – Keep cart items saved between sessions.  
+- **Payment Integration** – Simulate or integrate real payment gateways.  
+- **Product Categories and Filters** – Improve usability with product organization.  
+- **User Roles and Permissions** – Expand beyond admin and regular user.  
+- **Responsive Design** – Mobile-friendly layout for better accessibility.  
